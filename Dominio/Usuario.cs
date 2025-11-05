@@ -5,6 +5,7 @@ namespace Dominio
 {
     public class Usuario : IValidar
     {
+        public int Id { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Contrasena { get; set; }
@@ -12,14 +13,19 @@ namespace Dominio
         public Equipo Pertenece { get; set; }
         public DateTime IncorporacionEmpresa { get; set; }
 
-        public Usuario(string unNombre, string unApellido, string unaContrasena, string unEmail, Equipo unEquipo, DateTime fechaInicial)
+        public rol Rol { get; set; }
+
+        public Usuario(int id, string unNombre, string unApellido, string unaContrasena, string unEmail, Equipo unEquipo, DateTime fechaInicial,rol unrol)
         {
+            Id= id;
             Nombre = unNombre;
             Apellido = unApellido;
             Contrasena = unaContrasena;
             Email = unEmail;
             Pertenece = unEquipo;
             IncorporacionEmpresa = fechaInicial;
+            Rol = unrol;
+
         }
        
         public override bool Equals(object? obj)
@@ -54,7 +60,7 @@ namespace Dominio
                 throw new Exception("La contraseña no puede estar vacía.");
         }
 
-        public void Validar()
+        public  void Validar()
         {
             ValidarNombre();
             ValidarApellido();
@@ -65,5 +71,12 @@ namespace Dominio
         {
             return $"{Nombre} {Apellido} - {Email} - Equipo: {Pertenece?.Nombre}";
         }
+
+
     }
+
+
+
+
+
 }

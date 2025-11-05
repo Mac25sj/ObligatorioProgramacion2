@@ -1,18 +1,22 @@
 ﻿using Dominio;
-using System;
-using System.ComponentModel;
-using System.Security.AccessControl;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 public class Sistema
 {
-
-private List<Equipo> _equipos = new List<Equipo>();
+    private static Sistema _instancia;
+    private List<Equipo> _equipos = new List<Equipo>();
     private List<Usuario> _usuarios = new List<Usuario>();
     private List<Pago> _pagos = new List<Pago>();
-   private List<TipoDeGasto> _gastos = new List<TipoDeGasto>();
+    private List<TipoDeGasto> _gastos = new List<TipoDeGasto>();
+
+
+    public static Sistema Instancia
+    {
+        get
+        {
+            if (_instancia == null) _instancia = new Sistema();
+            return _instancia;
+        }
+    }
     public Sistema()
     {
         precargaDeEquipos();
@@ -32,61 +36,65 @@ private List<Equipo> _equipos = new List<Equipo>();
         }
     }
 
+
+
     private void precargaDeUsuarios()
     {
-        altaUsuario("Juan", "Pérez", "pass01", "Ventas", new DateTime(2025, 01, 10));
-        altaUsuario("María", "Gómez", "pass02", "Marketing", new DateTime(2025, 02, 15));
-        altaUsuario("Luis", "Rodríguez", "pass03", "RRHH", new DateTime(2025, 03, 20));
-        altaUsuario("Ana", "Fernández", "pass04", "Desarrollo", new DateTime(2025, 04, 25));
-        altaUsuario("Carlos", "López", "pass05", "Ventas", new DateTime(2025, 05, 30));
-        altaUsuario("Laura", "Martínez", "pass06", "Marketing", new DateTime(2025, 06, 05));
-        altaUsuario("Diego", "Sánchez", "pass07", "RRHH", new DateTime(2025, 07, 10));
-        altaUsuario("Sofía", "Ramírez", "pass08", "Desarrollo", new DateTime(2025, 08, 15));
-        altaUsuario("Pedro", "Torres", "pass09", "Ventas", new DateTime(2025, 09, 20));
-        altaUsuario("Valentina", "Flores", "pass10", "Marketing", new DateTime(2025, 09, 30));
-        altaUsuario("Martín", "Silva", "pass11", "RRHH", new DateTime(2025, 09, 30));
-        altaUsuario("Camila", "Castro", "pass12", "Desarrollo", new DateTime(2025, 09, 30));
-        altaUsuario("Joaquín", "Ramos", "pass13", "Ventas", new DateTime(2025, 01, 10));
-        altaUsuario("Lucía", "Vega", "pass14", "Marketing", new DateTime(2025, 02, 15));
-        altaUsuario("Federico", "Molina", "pass15", "RRHH", new DateTime(2025, 03, 20));
-        altaUsuario("Julieta", "Acosta", "pass16", "Desarrollo", new DateTime(2025, 04, 25));
-        altaUsuario("Tomás", "Reyes", "pass17", "Ventas", new DateTime(2025, 05, 30));
-        altaUsuario("Agustina", "Cabrera", "pass18", "Marketing", new DateTime(2025, 06, 05));
-        altaUsuario("Emiliano", "Suárez", "pass19", "RRHH", new DateTime(2025, 07, 10));
-        altaUsuario("Bianca", "Morales", "pass20", "Desarrollo", new DateTime(2025, 08, 15));
-        altaUsuario("Mateo", "Navarro", "pass21", "Ventas", new DateTime(2025, 09, 20));
-        altaUsuario("Isabella", "Ortega", "pass22", "Marketing", new DateTime(2025, 09, 30));
-
-
+        // Gerentes por equipo
+        altaUsuario("Juan", "Pérez", "pass01", "Ventas", new DateTime(2025, 01, 10), rol.Gerente);
+        altaUsuario("María", "Gómez", "pass02", "Marketing", new DateTime(2025, 02, 15), rol.Gerente);
+        altaUsuario("Luis", "Rodríguez", "pass03", "RRHH", new DateTime(2025, 03, 20), rol.Gerente);
+        altaUsuario("Ana", "Fernández", "pass04", "Desarrollo", new DateTime(2025, 04, 25), rol.Gerente);
+        // Empleados
+        altaUsuario("Carlos", "López", "pass05", "Ventas", new DateTime(2025, 05, 30), rol.Empleado);
+        altaUsuario("Laura", "Martínez", "pass06", "Marketing", new DateTime(2025, 06, 05), rol.Empleado);
+        altaUsuario("Diego", "Sánchez", "pass07", "RRHH", new DateTime(2025, 07, 10), rol.Empleado);
+        altaUsuario("Sofía", "Ramírez", "pass08", "Desarrollo", new DateTime(2025, 08, 15), rol.Empleado);
+        altaUsuario("Pedro", "Torres", "pass09", "Ventas", new DateTime(2025, 09, 20), rol.Empleado);
+        altaUsuario("Valentina", "Flores", "pass10", "Marketing", new DateTime(2025, 09, 30), rol.Empleado);
+        altaUsuario("Martín", "Silva", "pass11", "RRHH", new DateTime(2025, 09, 30), rol.Empleado);
+        altaUsuario("Camila", "Castro", "pass12", "Desarrollo", new DateTime(2025, 09, 30), rol.Empleado);
+        altaUsuario("Joaquín", "Ramos", "pass13", "Ventas", new DateTime(2025, 01, 10), rol.Empleado);
+        altaUsuario("Lucía", "Vega", "pass14", "Marketing", new DateTime(2025, 02, 15), rol.Empleado);
+        altaUsuario("Federico", "Molina", "pass15", "RRHH", new DateTime(2025, 03, 20), rol.Empleado);
+        altaUsuario("Julieta", "Acosta", "pass16", "Desarrollo", new DateTime(2025, 04, 25), rol.Empleado);
+        altaUsuario("Tomás", "Reyes", "pass17", "Ventas", new DateTime(2025, 05, 30), rol.Empleado);
+        altaUsuario("Agustina", "Cabrera", "pass18", "Marketing", new DateTime(2025, 06, 05), rol.Empleado);
+        altaUsuario("Emiliano", "Suárez", "pass19", "RRHH", new DateTime(2025, 07, 10), rol.Empleado);
+        altaUsuario("Bianca", "Morales", "pass20", "Desarrollo", new DateTime(2025, 08, 15), rol.Empleado);
+        altaUsuario("Mateo", "Navarro", "pass21", "Ventas", new DateTime(2025, 09, 20), rol.Empleado);
+        altaUsuario("Isabella", "Ortega", "pass22", "Marketing", new DateTime(2025, 09, 30), rol.Empleado);
     }
+
+
 
     private void precargaDePagos()
     {
-        altaPagoUnico(new Unico(new DateTime(2025, 01, 10), 1001, TipoDePago.CREDITO, _gastos[1], 1150, _usuarios[1])); 
-        altaPagoUnico(new Unico(new DateTime(2025, 02, 15), 1002, TipoDePago.DEBITO, _gastos[6], 1300, _usuarios[2])); 
-        altaPagoUnico(new Unico(new DateTime(2025, 03, 20), 1003, TipoDePago.EFECTIVO, _gastos[11], 1450, _usuarios[3])); 
-        altaPagoUnico(new Unico(new DateTime(2025, 04, 25), 1004, TipoDePago.CREDITO, _gastos[16], 1600, _usuarios[4])); 
-        altaPagoUnico(new Unico(new DateTime(2025, 05, 30), 1005, TipoDePago.DEBITO, _gastos[2], 1750, _usuarios[5])); 
-        altaPagoUnico(new Unico(new DateTime(2025, 06, 05), 1006, TipoDePago.EFECTIVO, _gastos[7], 1900, _usuarios[6])); 
-        altaPagoUnico(new Unico(new DateTime(2025, 07, 10), 1007, TipoDePago.CREDITO, _gastos[12], 2050, _usuarios[7])); 
-        altaPagoUnico(new Unico(new DateTime(2025, 08, 15), 1008, TipoDePago.DEBITO, _gastos[17], 2200, _usuarios[8])); 
+        altaPagoUnico(new Unico(new DateTime(2025, 01, 10), 1001, TipoDePago.CREDITO, _gastos[1], 1150, _usuarios[1]));
+        altaPagoUnico(new Unico(new DateTime(2025, 02, 15), 1002, TipoDePago.DEBITO, _gastos[6], 1300, _usuarios[2]));
+        altaPagoUnico(new Unico(new DateTime(2025, 03, 20), 1003, TipoDePago.EFECTIVO, _gastos[11], 1450, _usuarios[3]));
+        altaPagoUnico(new Unico(new DateTime(2025, 04, 25), 1004, TipoDePago.CREDITO, _gastos[16], 1600, _usuarios[4]));
+        altaPagoUnico(new Unico(new DateTime(2025, 05, 30), 1005, TipoDePago.DEBITO, _gastos[2], 1750, _usuarios[5]));
+        altaPagoUnico(new Unico(new DateTime(2025, 06, 05), 1006, TipoDePago.EFECTIVO, _gastos[7], 1900, _usuarios[6]));
+        altaPagoUnico(new Unico(new DateTime(2025, 07, 10), 1007, TipoDePago.CREDITO, _gastos[12], 2050, _usuarios[7]));
+        altaPagoUnico(new Unico(new DateTime(2025, 08, 15), 1008, TipoDePago.DEBITO, _gastos[17], 2200, _usuarios[8]));
         altaPagoUnico(new Unico(new DateTime(2025, 09, 20), 1009, TipoDePago.EFECTIVO, _gastos[3], 2350, _usuarios[9]));
-        altaPagoUnico(new Unico(new DateTime(2025, 09, 30), 1010, TipoDePago.CREDITO, _gastos[8], 2500, _usuarios[10])); 
-        altaPagoUnico(new Unico(new DateTime(2025, 09, 30), 1011, TipoDePago.DEBITO, _gastos[13], 2650, _usuarios[11])); 
+        altaPagoUnico(new Unico(new DateTime(2025, 09, 30), 1010, TipoDePago.CREDITO, _gastos[8], 2500, _usuarios[10]));
+        altaPagoUnico(new Unico(new DateTime(2025, 09, 30), 1011, TipoDePago.DEBITO, _gastos[13], 2650, _usuarios[11]));
         altaPagoUnico(new Unico(new DateTime(2025, 09, 01), 1012, TipoDePago.EFECTIVO, _gastos[14], 10300, _usuarios[1]));
         altaPagoUnico(new Unico(new DateTime(2025, 09, 02), 1013, TipoDePago.CREDITO, _gastos[15], 10450, _usuarios[2]));
         altaPagoUnico(new Unico(new DateTime(2025, 09, 03), 1014, TipoDePago.DEBITO, _gastos[16], 10600, _usuarios[3]));
         altaPagoUnico(new Unico(new DateTime(2025, 09, 04), 1015, TipoDePago.EFECTIVO, _gastos[17], 10750, _usuarios[4]));
         altaPagoUnico(new Unico(new DateTime(2025, 09, 05), 1016, TipoDePago.CREDITO, _gastos[18], 10900, _usuarios[5]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 06, 01), new DateTime(2025, 09, 01), TipoDePago.EFECTIVO, _gastos[18], 2800, _usuarios[12])); 
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 06, 15), new DateTime(2025, 09, 05), TipoDePago.CREDITO, _gastos[4], 2950, _usuarios[13])); 
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 07, 01), new DateTime(2025, 09, 06), TipoDePago.DEBITO, _gastos[9], 3100, _usuarios[14])); 
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 07, 15), new DateTime(2025, 09, 07), TipoDePago.EFECTIVO, _gastos[14], 3250, _usuarios[15]));  
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 08, 01), new DateTime(2025, 09, 08), TipoDePago.CREDITO, _gastos[19], 3400, _usuarios[16]));  
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 06), new DateTime(2025, 12, 06), TipoDePago.DEBITO, _gastos[5], 3550, _usuarios[17])); 
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 07), new DateTime(2025, 12, 07), TipoDePago.EFECTIVO, _gastos[10], 3700, _usuarios[18])); 
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 08), new DateTime(2025, 12, 08), TipoDePago.CREDITO, _gastos[15], 3850, _usuarios[19])); 
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 09), new DateTime(2025, 12, 09), TipoDePago.DEBITO, _gastos[20], 4000, _usuarios[20])); 
+        altaPagoRecurrente(new Recurrente(new DateTime(2025, 06, 01), new DateTime(2025, 09, 01), TipoDePago.EFECTIVO, _gastos[18], 2800, _usuarios[12]));
+        altaPagoRecurrente(new Recurrente(new DateTime(2025, 06, 15), new DateTime(2025, 09, 05), TipoDePago.CREDITO, _gastos[4], 2950, _usuarios[13]));
+        altaPagoRecurrente(new Recurrente(new DateTime(2025, 07, 01), new DateTime(2025, 09, 06), TipoDePago.DEBITO, _gastos[9], 3100, _usuarios[14]));
+        altaPagoRecurrente(new Recurrente(new DateTime(2025, 07, 15), new DateTime(2025, 09, 07), TipoDePago.EFECTIVO, _gastos[14], 3250, _usuarios[15]));
+        altaPagoRecurrente(new Recurrente(new DateTime(2025, 08, 01), new DateTime(2025, 09, 08), TipoDePago.CREDITO, _gastos[19], 3400, _usuarios[16]));
+        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 06), new DateTime(2025, 12, 06), TipoDePago.DEBITO, _gastos[5], 3550, _usuarios[17]));
+        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 07), new DateTime(2025, 12, 07), TipoDePago.EFECTIVO, _gastos[10], 3700, _usuarios[18]));
+        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 08), new DateTime(2025, 12, 08), TipoDePago.CREDITO, _gastos[15], 3850, _usuarios[19]));
+        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 09), new DateTime(2025, 12, 09), TipoDePago.DEBITO, _gastos[20], 4000, _usuarios[20]));
         altaPagoRecurrente(new Recurrente(new DateTime(2025, 06, 01), new DateTime(2025, 09, 01), TipoDePago.CREDITO, _gastos[21], 7400, _usuarios[1]));
         altaPagoRecurrente(new Recurrente(new DateTime(2025, 06, 15), new DateTime(2025, 09, 05), TipoDePago.DEBITO, _gastos[22], 7550, _usuarios[2]));
         altaPagoRecurrente(new Recurrente(new DateTime(2025, 07, 01), new DateTime(2025, 09, 06), TipoDePago.EFECTIVO, _gastos[23], 7700, _usuarios[3]));
@@ -111,7 +119,8 @@ private List<Equipo> _equipos = new List<Equipo>();
     }
 
 
-    private void precargaDeTiposDeGastos() { 
+    private void precargaDeTiposDeGastos()
+    {
         AltaGastosTipo("Alimentación", "Gastos relacionados con comidas y bebidas");
         AltaGastosTipo("Transporte", "Gastos relacionados con desplazamientos y transporte");
         AltaGastosTipo("Alojamiento", "Gastos relacionados con hospedaje y estadías");
@@ -144,43 +153,48 @@ private List<Equipo> _equipos = new List<Equipo>();
         AltaGastosTipo("Emergencias", "Gastos imprevistos por situaciones urgentes o excepcionales");
     }
 
-    //Nota la nueva lista no se modifica en el sistema, solo en la copia
-    public List <Usuario> Usuarios { get { return new List<Usuario>(_usuarios); } }
+    public List<Usuario> Usuarios { get { return new List<Usuario>(_usuarios); } }
 
 
     //Inicio Alta Usuario
-    public void altaUsuario(string nombre, string apellido, string contrasena, string pertenece, DateTime incorporacionEmpresa)
+    public void altaUsuario(string nombre, string apellido, string contrasena, string pertenece, DateTime incorporacionEmpresa, rol unRol)
     {
-        if (nombre == null ||apellido == null ||contrasena == null || pertenece == null || incorporacionEmpresa == DateTime.MinValue || !_equipos.Contains(EncontrarUnEquipo(pertenece)))
-            {
-            throw new Exception("Campo vacio detectado");
-
-        }
-        string email = crearEmail(nombre, apellido, pertenece);
-    
-        Usuario nuevoUsuario = new Usuario(nombre, apellido, contrasena, email, EncontrarUnEquipo (pertenece), incorporacionEmpresa);
-        if (_usuarios.Contains(nuevoUsuario))
+        if (string.IsNullOrWhiteSpace(nombre) ||
+            string.IsNullOrWhiteSpace(apellido) ||
+            string.IsNullOrWhiteSpace(contrasena) ||
+            string.IsNullOrWhiteSpace(pertenece) ||
+            incorporacionEmpresa == DateTime.MinValue ||
+            EncontrarUnEquipo(pertenece) == null)
         {
-            int posicion = nuevoUsuario.Email.IndexOf("@") ;
-            nuevoUsuario.Email = nuevoUsuario.Email.Insert(posicion, "7");
+            throw new Exception("Campo vacío detectado o equipo inválido.");
         }
 
+        string email = crearEmail(nombre, apellido, pertenece);
+        int nuevoId = GenerarNuevoId();
+
+        Usuario nuevoUsuario = new Usuario(nuevoId, nombre, apellido, contrasena, email, EncontrarUnEquipo(pertenece), incorporacionEmpresa,unRol);
         _usuarios.Add(nuevoUsuario);
     }
 
 
+
+
+
+
+
     public void AltaGastosTipo(string nombre, string descripcion)
     {
-        if (nombre == null)
+        if (string.IsNullOrWhiteSpace(nombre))
         {
-            throw new Exception("El nombre no puede ser nulo");
+            throw new Exception("El nombre no puede ser nulo ni vacío");
         }
-        if (descripcion == null)
+
+        if (string.IsNullOrWhiteSpace(descripcion))
         {
-            throw new Exception("La descriçión no puede ser nula");
+            throw new Exception("La descripción no puede ser nula ni vacía");
         }
+
         TipoDeGasto nuevoTipoDeGasto = new TipoDeGasto(nombre, descripcion);
-     
         _gastos.Add(nuevoTipoDeGasto);
     }
 
@@ -208,13 +222,13 @@ private List<Equipo> _equipos = new List<Equipo>();
 
     //Listar Pagos Inicio
 
-    public List <Pago> ListarGastosEnElMes()
+    public List<Pago> ListarGastosEnElMes()
     {
         List<Pago> resultado = new List<Pago>();
 
         foreach (Pago unPago in _pagos)
         {
-           if (unPago is Unico)
+            if (unPago is Unico)
             {
                 Unico pagoUnico = (Unico)unPago;
                 if (pagoEsteMes(pagoUnico.FechaDePago))
@@ -222,9 +236,10 @@ private List<Equipo> _equipos = new List<Equipo>();
                     resultado.Add(pagoUnico);
                 }
 
-            }else
+            }
+            else
             {
-                resultado.Add(unPago);  
+                resultado.Add(unPago);
             }
         }
         return resultado;
@@ -233,11 +248,11 @@ private List<Equipo> _equipos = new List<Equipo>();
     //Listar Pagos 
     public void AltaDePago(Pago unPago)
     {
-        unPago.Validar();  
+        unPago.Validar();
         _pagos.Add(unPago);
     }
 
-       
+
     //Alta de Usuario
 
 
@@ -248,7 +263,7 @@ private List<Equipo> _equipos = new List<Equipo>();
             throw new Exception("El nombre no puede ser nulo");
         }
         Equipo nuevoEquipo = new Equipo(nombre);
-     
+
         _equipos.Add(nuevoEquipo);
     }
 
@@ -286,20 +301,17 @@ private List<Equipo> _equipos = new List<Equipo>();
     private string crearEmail(string nombre, string apellido, string nombreEquipo)
     {
         string resultado = "";
-        for (int i = 0; i < 3; i++)
+
+        for (int i = 0; i < 3 && i < nombre.Length; i++)
         {
-            if (nombre.Length >= i)
-            {
-                resultado += nombre[i];
-            }
+            resultado += nombre[i];
         }
-        for (int i = 0; i < 3; i++)
+
+        for (int i = 0; i < 3 && i < apellido.Length; i++)
         {
-            if (apellido.Length >= i)
-            {
-                resultado += apellido[i];
-            }
+            resultado += apellido[i];
         }
+
         resultado += $"@{nombreEquipo}";
 
         return resultado.ToLower();
@@ -337,8 +349,8 @@ private List<Equipo> _equipos = new List<Equipo>();
     }
 
 
-    public List<Usuario> EsMiEquipo (string nombreDeEquipo)
- 
+    public List<Usuario> EsMiEquipo(string nombreDeEquipo)
+
     {
 
         List<Usuario> resultado = new List<Usuario>();
@@ -353,8 +365,47 @@ private List<Equipo> _equipos = new List<Equipo>();
 
     }
 
+    public Usuario iniciarSesion(string email, string contrasena)
+    {
+        foreach (Usuario u in _usuarios)
+        {
+            if (u.Email.ToUpper() == email.ToUpper() && u.Contrasena == contrasena)
+                return u;
+        }
+        return null;
+    }
+
+
+    //Para empleado
+
+    public void CargarPagos(Pago unPago)
+    {
+        unPago.Validar();
+        AltaDePago(unPago);
+    }
 
 
 
+    public List<Pago> ListarPagos(Usuario unUsuario)
+    {
+        List<Pago> resultado = new List<Pago>();
+
+        foreach (Pago unPago in _pagos)
+        {
+            if (unPago.NombreUsuario.Equals(unUsuario))
+            {
+
+                resultado.Add(unPago);
+            }
+
+        }
+        return resultado;
+    }
+
+
+    private int GenerarNuevoId()
+    {
+        return _usuarios.Count + 1;
+    }
 
 }

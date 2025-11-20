@@ -68,6 +68,28 @@ public class Recurrente : Pago
         }
     }
 
+    public override bool EntreFecha(DateTime fecha)
+    {
+
+        return (fecha > FechaDeInicio && fecha < FechaDeFinal);
+    }
+
+    public override DateTime fechaDePago()
+    {
+        DateTime primerDiaMes = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+
+        if (primerDiaMes < FechaDeInicio)
+        {
+            return FechaDeInicio;
+        }
+
+        if (primerDiaMes > FechaDeFinal)
+        {
+            return FechaDeFinal;
+        }
+
+        return primerDiaMes;
+    }
 }
 
 

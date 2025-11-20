@@ -67,4 +67,9 @@ public Usuario NombreUsuario { get; set; }
     {
         return NombreUsuario.Email == unEmail;
     }
+    public abstract bool EntreFecha(DateTime fecha);
+    public abstract DateTime fechaDePago();
+    
+
+    
 }

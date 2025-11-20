@@ -32,6 +32,14 @@ public class Unico : Pago
         }
     }
 
+    public override bool EntreFecha(DateTime fecha)
+    {
+        return (fecha.Year == FechaDePago.Year && fecha.Month == FechaDePago.Month) ;
+    }
 
+    public override DateTime fechaDePago()
+    {
+        return FechaDePago;
+    }
 }
 

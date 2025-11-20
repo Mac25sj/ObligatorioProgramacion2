@@ -70,51 +70,53 @@ public class Sistema
 
     private void precargaDePagos()
     {
-        altaPagoUnico(new Unico(new DateTime(2025, 01, 10), 1001, TipoDePago.CREDITO, _gastos[1], 1150, _usuarios[1]));
-        altaPagoUnico(new Unico(new DateTime(2025, 02, 15), 1002, TipoDePago.DEBITO, _gastos[6], 1300, _usuarios[2]));
-        altaPagoUnico(new Unico(new DateTime(2025, 03, 20), 1003, TipoDePago.EFECTIVO, _gastos[11], 1450, _usuarios[3]));
-        altaPagoUnico(new Unico(new DateTime(2025, 04, 25), 1004, TipoDePago.CREDITO, _gastos[16], 1600, _usuarios[4]));
-        altaPagoUnico(new Unico(new DateTime(2025, 05, 30), 1005, TipoDePago.DEBITO, _gastos[2], 1750, _usuarios[5]));
-        altaPagoUnico(new Unico(new DateTime(2025, 06, 05), 1006, TipoDePago.EFECTIVO, _gastos[7], 1900, _usuarios[6]));
-        altaPagoUnico(new Unico(new DateTime(2025, 07, 10), 1007, TipoDePago.CREDITO, _gastos[12], 2050, _usuarios[7]));
-        altaPagoUnico(new Unico(new DateTime(2025, 08, 15), 1008, TipoDePago.DEBITO, _gastos[17], 2200, _usuarios[8]));
-        altaPagoUnico(new Unico(new DateTime(2025, 09, 20), 1009, TipoDePago.EFECTIVO, _gastos[3], 2350, _usuarios[9]));
-        altaPagoUnico(new Unico(new DateTime(2025, 09, 30), 1010, TipoDePago.CREDITO, _gastos[8], 2500, _usuarios[10]));
-        altaPagoUnico(new Unico(new DateTime(2025, 09, 30), 1011, TipoDePago.DEBITO, _gastos[13], 2650, _usuarios[11]));
-        altaPagoUnico(new Unico(new DateTime(2025, 09, 01), 1012, TipoDePago.EFECTIVO, _gastos[14], 10300, _usuarios[1]));
-        altaPagoUnico(new Unico(new DateTime(2025, 09, 02), 1013, TipoDePago.CREDITO, _gastos[15], 10450, _usuarios[2]));
-        altaPagoUnico(new Unico(new DateTime(2025, 09, 03), 1014, TipoDePago.DEBITO, _gastos[16], 10600, _usuarios[3]));
-        altaPagoUnico(new Unico(new DateTime(2025, 09, 04), 1015, TipoDePago.EFECTIVO, _gastos[17], 10750, _usuarios[4]));
-        altaPagoUnico(new Unico(new DateTime(2025, 09, 05), 1016, TipoDePago.CREDITO, _gastos[18], 10900, _usuarios[5]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 06, 01), new DateTime(2025, 09, 01), TipoDePago.EFECTIVO, _gastos[18], 2800, _usuarios[12]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 06, 15), new DateTime(2025, 09, 05), TipoDePago.CREDITO, _gastos[4], 2950, _usuarios[13]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 07, 01), new DateTime(2025, 09, 06), TipoDePago.DEBITO, _gastos[9], 3100, _usuarios[14]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 07, 15), new DateTime(2025, 09, 07), TipoDePago.EFECTIVO, _gastos[14], 3250, _usuarios[15]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 08, 01), new DateTime(2025, 09, 08), TipoDePago.CREDITO, _gastos[19], 3400, _usuarios[16]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 06), new DateTime(2025, 12, 06), TipoDePago.DEBITO, _gastos[5], 3550, _usuarios[17]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 07), new DateTime(2025, 12, 07), TipoDePago.EFECTIVO, _gastos[10], 3700, _usuarios[18]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 08), new DateTime(2025, 12, 08), TipoDePago.CREDITO, _gastos[15], 3850, _usuarios[19]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 09), new DateTime(2025, 12, 09), TipoDePago.DEBITO, _gastos[20], 4000, _usuarios[20]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 06, 01), new DateTime(2025, 09, 01), TipoDePago.CREDITO, _gastos[21], 7400, _usuarios[1]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 06, 15), new DateTime(2025, 09, 05), TipoDePago.DEBITO, _gastos[22], 7550, _usuarios[2]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 07, 01), new DateTime(2025, 09, 06), TipoDePago.EFECTIVO, _gastos[23], 7700, _usuarios[3]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 07, 15), new DateTime(2025, 09, 07), TipoDePago.CREDITO, _gastos[24], 7850, _usuarios[4]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 08, 01), new DateTime(2025, 09, 08), TipoDePago.DEBITO, _gastos[25], 8000, _usuarios[5]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 08, 15), new DateTime(2025, 09, 09), TipoDePago.EFECTIVO, _gastos[26], 8150, _usuarios[6]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 08, 20), new DateTime(2025, 09, 10), TipoDePago.CREDITO, _gastos[27], 8300, _usuarios[7]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 11), new DateTime(2025, 12, 11), TipoDePago.DEBITO, _gastos[28], 8450, _usuarios[8]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 12), new DateTime(2025, 12, 12), TipoDePago.EFECTIVO, _gastos[29], 8600, _usuarios[9]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 13), new DateTime(2025, 12, 13), TipoDePago.CREDITO, _gastos[1], 8750, _usuarios[10]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 14), new DateTime(2025, 12, 14), TipoDePago.DEBITO, _gastos[2], 8900, _usuarios[11]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 15), new DateTime(2025, 12, 15), TipoDePago.EFECTIVO, _gastos[3], 9050, _usuarios[12]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 16), new DateTime(2025, 12, 16), TipoDePago.CREDITO, _gastos[4], 9200, _usuarios[13]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 17), new DateTime(2025, 12, 17), TipoDePago.DEBITO, _gastos[5], 9350, _usuarios[14]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 18), new DateTime(2025, 12, 18), TipoDePago.EFECTIVO, _gastos[6], 9500, _usuarios[15]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 19), new DateTime(2025, 12, 19), TipoDePago.CREDITO, _gastos[7], 9650, _usuarios[16]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 20), new DateTime(2025, 12, 20), TipoDePago.DEBITO, _gastos[8], 9800, _usuarios[17]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 21), new DateTime(2025, 12, 21), TipoDePago.EFECTIVO, _gastos[9], 9950, _usuarios[18]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 22), new DateTime(2025, 12, 22), TipoDePago.CREDITO, _gastos[10], 10100, _usuarios[19]));
-        altaPagoRecurrente(new Recurrente(new DateTime(2025, 09, 23), new DateTime(2025, 12, 23), TipoDePago.DEBITO, _gastos[11], 10250, _usuarios[20]));
+    
+        DateTime hoy = DateTime.Now;
+        altaPagoUnico(new Unico(hoy.AddDays(-300), 1001, TipoDePago.CREDITO, _gastos[1], 1150, _usuarios[1]));
+        altaPagoUnico(new Unico(hoy.AddDays(-270), 1002, TipoDePago.DEBITO, _gastos[6], 1300, _usuarios[2]));
+        altaPagoUnico(new Unico(hoy.AddDays(-5), 1003, TipoDePago.EFECTIVO, _gastos[11], 1450, _usuarios[3]));
+        altaPagoUnico(new Unico(hoy.AddDays(-5), 1004, TipoDePago.CREDITO, _gastos[16], 1600, _usuarios[4]));
+        altaPagoUnico(new Unico(hoy.AddDays(-180), 1005, TipoDePago.DEBITO, _gastos[2], 1750, _usuarios[5]));
+        altaPagoUnico(new Unico(hoy.AddDays(-150), 1006, TipoDePago.EFECTIVO, _gastos[7], 1900, _usuarios[6]));
+        altaPagoUnico(new Unico(hoy.AddDays(-120), 1007, TipoDePago.CREDITO, _gastos[12], 2050, _usuarios[7]));
+        altaPagoUnico(new Unico(hoy.AddDays(-90), 1008, TipoDePago.DEBITO, _gastos[17], 2200, _usuarios[8]));
+        altaPagoUnico(new Unico(hoy.AddDays(-60), 1009, TipoDePago.EFECTIVO, _gastos[3], 2350, _usuarios[9]));
+        altaPagoUnico(new Unico(hoy.AddDays(-30), 1010, TipoDePago.CREDITO, _gastos[8], 2500, _usuarios[10]));
+        altaPagoUnico(new Unico(hoy.AddDays(-30), 1011, TipoDePago.DEBITO, _gastos[13], 2650, _usuarios[11]));
+        altaPagoUnico(new Unico(hoy.AddDays(-65), 1012, TipoDePago.EFECTIVO, _gastos[14], 10300, _usuarios[1]));
+        altaPagoUnico(new Unico(hoy.AddDays(-64), 1013, TipoDePago.CREDITO, _gastos[15], 10450, _usuarios[2]));
+        altaPagoUnico(new Unico(hoy.AddDays(-63), 1014, TipoDePago.DEBITO, _gastos[16], 10600, _usuarios[3]));
+        altaPagoUnico(new Unico(hoy.AddDays(-62), 1015, TipoDePago.EFECTIVO, _gastos[17], 10750, _usuarios[4]));
+        altaPagoUnico(new Unico(hoy.AddDays(-61), 1016, TipoDePago.CREDITO, _gastos[18], 10900, _usuarios[5]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-160), hoy.AddDays(-60), TipoDePago.EFECTIVO, _gastos[18], 2800, _usuarios[12]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-145), hoy.AddDays(-56), TipoDePago.CREDITO, _gastos[4], 2950, _usuarios[13]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-130), hoy.AddDays(-55), TipoDePago.DEBITO, _gastos[9], 3100, _usuarios[14]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-115), hoy.AddDays(-54), TipoDePago.EFECTIVO, _gastos[14], 3250, _usuarios[15]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-100), hoy.AddDays(-53), TipoDePago.CREDITO, _gastos[19], 3400, _usuarios[16]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-60), hoy.AddDays(30), TipoDePago.DEBITO, _gastos[5], 3550, _usuarios[17]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-59), hoy.AddDays(31), TipoDePago.EFECTIVO, _gastos[10], 3700, _usuarios[18]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-58), hoy.AddDays(32), TipoDePago.CREDITO, _gastos[15], 3850, _usuarios[19]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-57), hoy.AddDays(33), TipoDePago.DEBITO, _gastos[20], 4000, _usuarios[20]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-160), hoy.AddDays(-60), TipoDePago.CREDITO, _gastos[21], 7400, _usuarios[1]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-145), hoy.AddDays(-56), TipoDePago.DEBITO, _gastos[22], 7550, _usuarios[2]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-130), hoy.AddDays(200), TipoDePago.EFECTIVO, _gastos[23], 7700, _usuarios[3]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-115), hoy.AddDays(70), TipoDePago.CREDITO, _gastos[24], 7850, _usuarios[4]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-100), hoy.AddDays(-53), TipoDePago.DEBITO, _gastos[25], 8000, _usuarios[5]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-85), hoy.AddDays(-52), TipoDePago.EFECTIVO, _gastos[26], 8150, _usuarios[6]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-80), hoy.AddDays(-51), TipoDePago.CREDITO, _gastos[27], 8300, _usuarios[7]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-49), hoy.AddDays(41), TipoDePago.DEBITO, _gastos[28], 8450, _usuarios[8]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-48), hoy.AddDays(42), TipoDePago.EFECTIVO, _gastos[29], 8600, _usuarios[9]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-47), hoy.AddDays(43), TipoDePago.CREDITO, _gastos[1], 8750, _usuarios[10]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-46), hoy.AddDays(44), TipoDePago.DEBITO, _gastos[2], 8900, _usuarios[11]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-45), hoy.AddDays(45), TipoDePago.EFECTIVO, _gastos[3], 9050, _usuarios[12]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-44), hoy.AddDays(46), TipoDePago.CREDITO, _gastos[4], 9200, _usuarios[13]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-43), hoy.AddDays(47), TipoDePago.DEBITO, _gastos[5], 9350, _usuarios[14]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-42), hoy.AddDays(48), TipoDePago.EFECTIVO, _gastos[6], 9500, _usuarios[15]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-41), hoy.AddDays(49), TipoDePago.CREDITO, _gastos[7], 9650, _usuarios[16]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-40), hoy.AddDays(50), TipoDePago.DEBITO, _gastos[8], 9800, _usuarios[17]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-39), hoy.AddDays(51), TipoDePago.EFECTIVO, _gastos[9], 9950, _usuarios[18]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-38), hoy.AddDays(52), TipoDePago.CREDITO, _gastos[10], 10100, _usuarios[19]));
+        altaPagoRecurrente(new Recurrente(hoy.AddDays(-37), hoy.AddDays(53), TipoDePago.DEBITO, _gastos[11], 10250, _usuarios[20]));
 
     }
 
@@ -403,9 +405,63 @@ public class Sistema
     }
 
 
+    //Para gerente (todos los listados para equipo.con mes y año
+
+    public List<Pago> ListarPagosPorFechayEquipo(Equipo unEquipo, DateTime fecha)
+    {
+        List<Pago> resultado = new List<Pago>();
+
+        foreach (Pago unPago in _pagos)
+        {
+            if (unPago.NombreUsuario.Pertenece.Equals(unEquipo)
+               &&  unPago.EntreFecha(fecha))
+            {
+                
+                resultado.Add(unPago);
+            }
+
+        }
+        return resultado;
+
+    }
+
+    public Usuario ObtenerUsuariobyID(int id)
+    {
+foreach ( Usuario u in Usuarios)
+        {
+            if (u.Id == id) return u;
+        }
+        return null;
+    }
+    public List<TipoDeGasto> obtenerListaTipoGasto()
+    {
+        List<TipoDeGasto> resultado = new List<TipoDeGasto>();
+        foreach (TipoDeGasto t in _gastos)
+        {
+            resultado.Add(t);
+        }
+        return resultado;
+    }
+    public  double GastosTotalesPorEquipoEnElMes (Equipo unEquipo, DateTime unaFecha )
+    {
+        double montoFinal = 0;
+        List<Pago> gastosEquipo = ListarPagosPorFechayEquipo(unEquipo, unaFecha);
+        foreach (Pago p in gastosEquipo)
+        {
+            montoFinal += p.Monto;
+        }
+        return montoFinal;
+
+    }
+
+
+
+
     private int GenerarNuevoId()
     {
         return _usuarios.Count + 1;
     }
+
+
 
 }
